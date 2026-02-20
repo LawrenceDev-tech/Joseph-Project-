@@ -1,0 +1,13 @@
+{
+  "name": "patient-record-system",
+  "version": "1.0.0",
+  "description": "Digital Patient Record Management System",
+  "private": true,
+  "scripts": {
+    "config": "node scripts/generate-firebase-config.js"
+  },
+  "dependencies": {
+    "firebase": "^11.0.0",
+    "dotenv": "^16.4.5"
+  }
+}

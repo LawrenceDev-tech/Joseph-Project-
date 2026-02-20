@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register as a patient – Digital Patient Record Management System.">
+  <title>Patient Registration | Digital Patient Record Management</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+</head>
+<body class="auth-split-body">
+  <div class="auth-split-main">
+    <div class="auth-split">
+      <!-- Left: image -->
+      <div class="auth-split-left login-split-left">
+        <div class="login-left-image-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80"
+            alt="Patient registration"
+            width="800"
+            height="600"
+            class="login-left-image"
+          >
+        </div>
+      </div>
+
+      <!-- Right: 5-step registration wizard -->
+      <div class="auth-split-right">
+        <div class="auth-form-panel register-wizard-wrap">
+          <h1 class="auth-form-title">Patient Registration</h1>
+          <p class="auth-form-subtitle">Complete the steps below to create your account.</p>
+
+          <div class="register-steps" role="tablist" aria-label="Registration steps">
+            <button type="button" class="register-step-btn is-active" data-step="1" aria-selected="true" aria-label="Step 1">1</button>
+            <button type="button" class="register-step-btn" data-step="2" aria-selected="false" aria-label="Step 2">2</button>
+            <button type="button" class="register-step-btn" data-step="3" aria-selected="false" aria-label="Step 3">3</button>
+            <button type="button" class="register-step-btn" data-step="4" aria-selected="false" aria-label="Step 4">4</button>
+            <button type="button" class="register-step-btn" data-step="5" aria-selected="false" aria-label="Step 5">5</button>
+          </div>
+
+          <form id="register-wizard-form" class="register-wizard-form auth-form" action="#" method="post" novalidate>
+            <!-- Step 1: Personal info -->
+            <div class="register-step-panel is-visible" data-panel="1" role="tabpanel">
+              <h2 class="register-step-title">Step 1 – Personal information</h2>
+              <div class="tracking-form-row">
+                <label for="reg-first-name">First name <span class="required">*</span></label>
+                <input type="text" id="reg-first-name" name="firstName" autocomplete="given-name" required placeholder="e.g. Mary">
+              </div>
+              <div class="tracking-form-row">
+                <label for="reg-last-name">Last name <span class="required">*</span></label>
+                <input type="text" id="reg-last-name" name="lastName" autocomplete="family-name" required placeholder="e.g. Kamara">
+              </div>
+              <div class="tracking-form-row">
+                <label for="reg-dob">Date of birth <span class="required">*</span></label>
+                <input type="date" id="reg-dob" name="dob" required>
+              </div>
+              <div class="tracking-form-row">
+                <label for="reg-gender">Gender</label>
+                <select id="reg-gender" name="gender">
+                  <option value="">Select</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="register-step-actions">
+                <button type="button" class="btn btn-primary register-next" data-next="2">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 2: Contact -->
+            <div class="register-step-panel" data-panel="2" role="tabpanel">
+              <h2 class="register-step-title">Step 2 – Contact details</h2>
+              <div class="tracking-form-row">
+                <label for="reg-email">Email address <span class="required">*</span></label>
+                <input type="email" id="reg-email" name="email" autocomplete="email" required placeholder="you@example.com">
+                <span id="reg-email-error" class="form-error" role="alert"></span>
+              </div>
+              <div class="tracking-form-row">
+                <label for="reg-phone">Phone number</label>
+                <input type="tel" id="reg-phone" name="phone" autocomplete="tel" placeholder="e.g. +232 00 123456">
+              </div>
+              <div class="tracking-form-row">
+                <label for="reg-address">Address</label>
+                <input type="text" id="reg-address" name="address" autocomplete="street-address" placeholder="Street, city, district">
+              </div>
+              <div class="register-step-actions">
+                <button type="button" class="btn btn-secondary register-prev" data-prev="1">Back</button>
+                <button type="button" class="btn btn-primary register-next" data-next="3">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 3: Account & medical -->
+            <div class="register-step-panel" data-panel="3" role="tabpanel">
+              <h2 class="register-step-title">Step 3 – Account & medical info</h2>
+              <div class="tracking-form-row">
+                <label for="reg-password">Password <span class="required">*</span></label>
+                <input type="password" id="reg-password" name="password" autocomplete="new-password" required placeholder="At least 6 characters" minlength="6">
+                <span id="reg-password-error" class="form-error" role="alert"></span>
+              </div>
+              <div class="tracking-form-row">
+                <label for="reg-password-confirm">Confirm password <span class="required">*</span></label>
+                <input type="password" id="reg-password-confirm" name="passwordConfirm" autocomplete="new-password" required placeholder="Re-enter password">
+                <span id="reg-password-confirm-error" class="form-error" role="alert"></span>
+              </div>
+              <div class="tracking-form-row">
+                <label for="reg-blood-type">Blood type</label>
+                <select id="reg-blood-type" name="bloodType">
+                  <option value="">Select</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                </select>
+              </div>
+              <div class="tracking-form-row">
+                <label for="reg-allergies">Allergies or conditions (optional)</label>
+                <input type="text" id="reg-allergies" name="allergies" placeholder="e.g. Penicillin, none">
+              </div>
+              <div class="register-step-actions">
+                <button type="button" class="btn btn-secondary register-prev" data-prev="2">Back</button>
+                <button type="button" class="btn btn-primary register-next" data-next="4">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 4: Upload documents / images -->
+            <div class="register-step-panel" data-panel="4" role="tabpanel">
+              <h2 class="register-step-title">Step 4 – Upload documents (optional)</h2>
+              <div class="tracking-form-row">
+                <label for="reg-photo">Profile or ID photo</label>
+                <input type="file" id="reg-photo" name="photo" accept="image/*,.pdf" aria-describedby="reg-photo-hint">
+                <span id="reg-photo-hint" class="form-hint">Accepted: images or PDF. Max 5 MB.</span>
+              </div>
+              <div class="tracking-form-row">
+                <label for="reg-document">Additional document (optional)</label>
+                <input type="file" id="reg-document" name="document" accept="image/*,.pdf">
+              </div>
+              <div class="register-step-actions">
+                <button type="button" class="btn btn-secondary register-prev" data-prev="3">Back</button>
+                <button type="button" class="btn btn-primary register-next" data-next="5">Next</button>
+              </div>
+            </div>
+
+            <!-- Step 5: Review & submit -->
+            <div class="register-step-panel" data-panel="5" role="tabpanel">
+              <h2 class="register-step-title">Step 5 – Review and submit</h2>
+              <div class="register-review" id="register-review-summary">
+                <dl class="register-review-list">
+                  <dt>Name</dt><dd id="review-name">—</dd>
+                  <dt>Date of birth</dt><dd id="review-dob">—</dd>
+                  <dt>Email</dt><dd id="review-email">—</dd>
+                  <dt>Phone</dt><dd id="review-phone">—</dd>
+                  <dt>Address</dt><dd id="review-address">—</dd>
+                </dl>
+              </div>
+              <div class="form-group-checkbox">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="reg-terms" name="terms" required>
+                  I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a>.
+                </label>
+                <span id="reg-terms-error" class="form-error" role="alert"></span>
+              </div>
+              <div class="register-step-actions">
+                <button type="button" class="btn btn-secondary register-prev" data-prev="4">Back</button>
+                <button type="submit" class="btn btn-primary">Submit registration</button>
+              </div>
+            </div>
+          </form>
+
+          <p class="auth-switch">
+            Already have an account? <a href="login.html">Sign in</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/register-wizard.js"></script>
+</body>
+</html>

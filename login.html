@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign in to the Digital Patient Record Management System.">
+  <title>Sign In | Digital Patient Record Management</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+</head>
+<body class="auth-split-body">
+  <div class="auth-split-main">
+    <div class="auth-split">
+      <!-- Left: image panel -->
+      <div class="auth-split-left login-split-left">
+        <div class="login-left-image-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80"
+            alt="Secure healthcare and patient records"
+            width="800"
+            height="600"
+            class="login-left-image"
+          >
+        </div>
+      </div>
+
+      <!-- Right: form panel -->
+      <div class="auth-split-right">
+        <div class="auth-form-panel">
+          <h1 class="auth-form-title">Sign in</h1>
+          <p class="auth-form-subtitle">Enter your details to access your account.</p>
+
+          <!-- Social sign-in: Google, Facebook, Apple (Firebase Auth – secure popup) -->
+          <div class="auth-social-row">
+            <button type="button" id="btn-sign-in-google" class="auth-social-btn" aria-label="Sign in with Google">
+              <svg class="auth-social-icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              Google
+            </button>
+            <button type="button" id="btn-sign-in-facebook" class="auth-social-btn" aria-label="Sign in with Facebook">
+              <svg class="auth-social-icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              Facebook
+            </button>
+            <button type="button" id="btn-sign-in-apple" class="auth-social-btn" aria-label="Sign in with Apple">
+              <svg class="auth-social-icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+              </svg>
+              Apple
+            </button>
+          </div>
+
+          <div class="auth-divider"><span>or continue with email</span></div>
+
+          <!-- Step 1: Email + Password -->
+          <div id="login-step-1">
+          <form id="login-form" class="auth-form" action="#" method="post" novalidate>
+            <div id="login-form-error" class="form-error form-error-block login-form-error-wrap" role="alert" aria-live="polite" style="display: none;"></div>
+            <div class="form-group">
+              <label for="login-email">Email address</label>
+              <input
+                type="email"
+                id="login-email"
+                name="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              >
+              <span id="login-email-error" class="form-error" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <div class="auth-password-wrap">
+                <input
+                  type="password"
+                  id="login-password"
+                  name="password"
+                  autocomplete="current-password"
+                  placeholder="Enter your password"
+                  required
+                >
+                <button type="button" id="toggle-login-password" class="auth-password-toggle" aria-label="Show password">
+                  <span class="auth-password-show">Show</span>
+                  <span class="auth-password-hide" hidden>Hide</span>
+                </button>
+              </div>
+              <span id="login-password-error" class="form-error" role="alert" aria-live="polite"></span>
+            </div>
+            <button type="submit" id="login-submit-btn" class="auth-submit-btn btn btn-primary">Sign in</button>
+          </form>
+          </div>
+
+          <!-- Step 2: Email verification (shown after step 1 when email not verified) -->
+          <div id="login-step-2" class="login-step-2-panel" style="display: none;">
+            <div class="login-step-2-icon" aria-hidden="true">✉️</div>
+            <h2 class="auth-form-title">Verify your email</h2>
+            <p class="auth-form-subtitle">We sent a verification link to <strong id="login-step-2-email"></strong>. Click the link in that email to complete sign-in.</p>
+            <p id="login-step-2-message" class="login-step-2-message">After verifying, sign in again and you’ll go straight to the admin dashboard.</p>
+            <button type="button" id="login-resend-verification" class="auth-submit-btn btn btn-secondary">Resend verification email</button>
+            <p class="auth-switch" style="margin-top: 1rem;">
+              <a href="#" id="login-back-to-step1">Back to sign in</a>
+            </p>
+          </div>
+
+          <p class="auth-switch" id="auth-switch-below">
+            Don't have an account? <a href="register.html">Create an account or sign in</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK (compat) – replace with your project config in js/firebase-config.js -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script>if (window.initFirebase) window.initFirebase();</script>
+  <script src="js/firebase-auth.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Password toggle for login form
+    (function () {
+      var input = document.getElementById('login-password');
+      var btn = document.getElementById('toggle-login-password');
+      if (!input || !btn) return;
+      var showSpan = btn.querySelector('.auth-password-show');
+      var hideSpan = btn.querySelector('.auth-password-hide');
+      btn.addEventListener('click', function () {
+        var isPassword = input.type === 'password';
+        input.type = isPassword ? 'text' : 'password';
+        btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+        if (showSpan) showSpan.hidden = isPassword;
+        if (hideSpan) hideSpan.hidden = !isPassword;
+      });
+    })();
+    // Step 2: Back to sign in & Resend verification
+    (function () {
+      var backBtn = document.getElementById('login-back-to-step1');
+      var resendBtn = document.getElementById('login-resend-verification');
+      if (backBtn) backBtn.addEventListener('click', function (e) { e.preventDefault(); document.getElementById('login-step-1').style.display = 'block'; document.getElementById('login-step-2').style.display = 'none'; });
+      if (resendBtn) resendBtn.addEventListener('click', function () { if (window.firebaseResendVerification) window.firebaseResendVerification(); });
+    })();
+    // Google, Facebook, Apple sign-in
+    (function () {
+      var g = document.getElementById('btn-sign-in-google');
+      var f = document.getElementById('btn-sign-in-facebook');
+      var a = document.getElementById('btn-sign-in-apple');
+      if (g) g.addEventListener('click', function () { if (window.firebaseSignInWithGoogle) window.firebaseSignInWithGoogle(); });
+      if (f) f.addEventListener('click', function () { if (window.firebaseSignInWithFacebook) window.firebaseSignInWithFacebook(); });
+      if (a) a.addEventListener('click', function () { if (window.firebaseSignInWithApple) window.firebaseSignInWithApple(); });
+    })();
+    // Clear error when user types or focuses email/password (smoother, professional UX)
+    (function () {
+      var email = document.getElementById('login-email');
+      var password = document.getElementById('login-password');
+      function clearError() { if (window.clearLoginError) window.clearLoginError(); }
+      if (email) { email.addEventListener('input', clearError); email.addEventListener('focus', clearError); }
+      if (password) { password.addEventListener('input', clearError); password.addEventListener('focus', clearError); }
+    })();
+  </script>
+</body>
+</html>

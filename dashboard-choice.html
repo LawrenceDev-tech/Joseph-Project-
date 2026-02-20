@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choose your dashboard – Patient, Staff, or Admin.">
+  <title>Welcome | Digital Patient Record Management</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Home">
+        <img src="images/logo.svg" alt="" class="logo-img" width="40" height="40">
+        <span class="logo-text">Patient Record System</span>
+      </a>
+      <div class="nav-right">
+        <a href="index.html" class="nav-menu-link">Home</a>
+        <a href="login.html" class="btn-login">Sign out</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content dashboard-choice-main">
+    <section class="dashboard-choice-section">
+      <h1 class="dashboard-choice-heading">Welcome back</h1>
+      <p class="dashboard-choice-intro">Choose how you would like to continue.</p>
+
+      <div class="dashboard-choice-grid">
+        <!-- Patient -->
+        <div class="dashboard-choice-card">
+          <div class="dashboard-choice-card-image">
+            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&q=80" alt="" width="400" height="260">
+          </div>
+          <div class="dashboard-choice-card-body">
+            <h2 class="dashboard-choice-card-title">Patient</h2>
+            <p class="dashboard-choice-card-desc">View your health records, appointments, and medical history in one place.</p>
+            <a href="patient-dashboard.html" class="btn btn-primary dashboard-choice-btn">Go to Patient Dashboard</a>
+          </div>
+        </div>
+
+        <!-- Staff -->
+        <div class="dashboard-choice-card">
+          <div class="dashboard-choice-card-image">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="" width="400" height="260">
+          </div>
+          <div class="dashboard-choice-card-body">
+            <h2 class="dashboard-choice-card-title">Are you a Staff?</h2>
+            <p class="dashboard-choice-card-desc">Access the staff portal to manage patient records and daily tasks.</p>
+            <a href="staff-dashboard.html" class="btn btn-primary dashboard-choice-btn">Go to Staff Dashboard</a>
+          </div>
+        </div>
+
+        <!-- Admin -->
+        <div class="dashboard-choice-card">
+          <div class="dashboard-choice-card-image">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80" alt="" width="400" height="260">
+          </div>
+          <div class="dashboard-choice-card-body">
+            <h2 class="dashboard-choice-card-title">Are you an Admin?</h2>
+            <p class="dashboard-choice-card-desc">Administrator access for system settings, users, and reports. Password required.</p>
+            <button type="button" class="btn btn-primary dashboard-choice-btn" id="btn-open-admin-modal">Go to Admin Dashboard</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Admin password modal -->
+  <div class="modal-overlay" id="admin-modal" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="admin-modal-title">
+    <div class="modal-box">
+      <h2 class="modal-title" id="admin-modal-title">Admin access</h2>
+      <p class="modal-desc">Enter the administrator password to access the Admin Dashboard.</p>
+      <form id="admin-password-form" class="modal-form">
+        <div class="form-group">
+          <label for="admin-password-input">Password</label>
+          <input type="password" id="admin-password-input" autocomplete="off" placeholder="Enter password" required>
+          <span id="admin-password-error" class="form-error" role="alert"></span>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="admin-modal-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var ADMIN_PASSWORD = '246810';
+      var overlay = document.getElementById('admin-modal');
+      var openBtn = document.getElementById('btn-open-admin-modal');
+      var cancelBtn = document.getElementById('admin-modal-cancel');
+      var form = document.getElementById('admin-password-form');
+      var input = document.getElementById('admin-password-input');
+      var errorEl = document.getElementById('admin-password-error');
+
+      function showModal() {
+        if (!overlay) return;
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        input.value = '';
+        if (errorEl) errorEl.textContent = '';
+        input.focus();
+      }
+
+      function hideModal() {
+        if (!overlay) return;
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+      }
+
+      openBtn && openBtn.addEventListener('click', showModal);
+      cancelBtn && cancelBtn.addEventListener('click', hideModal);
+
+      overlay && overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) hideModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay && overlay.classList.contains('is-open')) hideModal();
+      });
+
+      form && form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var pwd = input ? input.value : '';
+        if (errorEl) errorEl.textContent = '';
+        if (pwd === ADMIN_PASSWORD) {
+          window.location.href = 'admin-dashboard.html';
+        } else {
+          if (errorEl) {
+            errorEl.textContent = 'Incorrect password. Please try again.';
+            errorEl.style.visibility = 'visible';
+          }
+          input.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

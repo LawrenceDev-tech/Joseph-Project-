@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard | Digital Patient Record Management</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+</head>
+<body class="pd-body">
+  <div class="pd-app">
+    <!-- Sidebar -->
+    <aside class="pd-sidebar" aria-label="Main navigation">
+      <div class="pd-sidebar-head">
+        <a href="index.html" class="pd-sidebar-logo">
+          <img src="images/logo.svg" alt="" class="pd-sidebar-logo-img" width="40" height="40">
+        </a>
+        <h2 class="pd-sidebar-title">Community Health Center</h2>
+        <p class="pd-sidebar-subtitle">Patient Record System</p>
+      </div>
+      <nav class="pd-sidebar-nav">
+        <button type="button" class="pd-nav-item is-active" data-view="overview" aria-current="page">
+          <span class="pd-nav-icon" aria-hidden="true">◉</span>
+          <span>Overview</span>
+        </button>
+        <button type="button" class="pd-nav-item" data-view="patients">
+          <span class="pd-nav-icon" aria-hidden="true">👥</span>
+          <span>Patients</span>
+        </button>
+        <button type="button" class="pd-nav-item" data-view="add-patient">
+          <span class="pd-nav-icon" aria-hidden="true">➕</span>
+          <span>Add Patient</span>
+        </button>
+        <button type="button" class="pd-nav-item" data-view="updates">
+          <span class="pd-nav-icon" aria-hidden="true">📋</span>
+          <span>Data Updates</span>
+        </button>
+      </nav>
+      <div class="pd-sidebar-footer">
+        <a href="dashboard-choice.html" class="pd-nav-item pd-nav-link">Dashboard</a>
+        <a href="login.html" class="pd-nav-item pd-nav-link">Sign out</a>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="pd-main">
+      <header class="pd-topbar">
+        <h1 class="pd-topbar-title" id="pd-page-title">Overview</h1>
+        <div class="pd-user-profile" aria-label="Current user">
+          <div class="pd-avatar pd-avatar-sm pd-user-avatar" id="pd-user-avatar" aria-hidden="true">S</div>
+          <span class="pd-user-name" id="pd-user-name">Staff</span>
+        </div>
+      </header>
+
+      <div class="pd-content">
+        <!-- Overview view -->
+        <section class="pd-view is-visible" id="view-overview" aria-labelledby="pd-page-title">
+          <div class="pd-stats">
+            <button type="button" class="pd-stat-card pd-stat-card-clickable" data-goto="patients" data-tab="in" aria-label="View patients in hospital">
+              <span class="pd-stat-value" id="stat-in">0</span>
+              <span class="pd-stat-label">Patients in hospital</span>
+              <span class="pd-stat-hint">Click to view</span>
+            </button>
+            <button type="button" class="pd-stat-card pd-stat-card-clickable" data-goto="patients" data-tab="out" aria-label="View discharged patients">
+              <span class="pd-stat-value" id="stat-out">0</span>
+              <span class="pd-stat-label">Patients discharged</span>
+              <span class="pd-stat-hint">Click to view</span>
+            </button>
+            <button type="button" class="pd-stat-card pd-stat-card-clickable" data-goto="patients" data-tab="all" aria-label="View all patients">
+              <span class="pd-stat-value" id="stat-total">0</span>
+              <span class="pd-stat-label">Total records</span>
+              <span class="pd-stat-hint">Click to view</span>
+            </button>
+          </div>
+          <div class="pd-overview-recent">
+            <h3 class="pd-overview-recent-title">Recent patients</h3>
+            <ul class="pd-recent-list" id="pd-recent-list" aria-label="Recent patient records">
+              <li class="pd-recent-empty" id="pd-recent-empty">No patients yet. Add a patient to see records here.</li>
+            </ul>
+            <a href="#patients" class="pd-link-btn" data-view="patients" id="pd-link-all-patients">View all patients →</a>
+          </div>
+          <div class="pd-overview-discharged">
+            <h3 class="pd-overview-recent-title">Discharged patients</h3>
+            <p class="pd-overview-discharged-desc">Patients who have been discharged. Click View to see full details.</p>
+            <ul class="pd-discharged-list" id="pd-discharged-list" aria-label="Discharged patient records">
+              <li class="pd-discharged-empty" id="pd-discharged-empty">No discharged patients yet.</li>
+            </ul>
+            <a href="#patients" class="pd-link-btn pd-link-btn-discharged" data-view="patients" data-tab="out" id="pd-link-all-discharged">View all discharged →</a>
+          </div>
+        </section>
+
+        <!-- Patients list view -->
+        <section class="pd-view" id="view-patients" aria-labelledby="pd-page-title" hidden>
+          <div class="pd-toolbar-card">
+            <div class="pd-toolbar">
+              <div class="pd-toolbar-search">
+                <label for="pd-search" class="pd-search-label">Search patients</label>
+                <div class="pd-search-wrap">
+                  <span class="pd-search-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                  </span>
+                  <input type="search" id="pd-search" class="pd-search-input" placeholder="Type a name (e.g. Lawrence Bangs)..." autocomplete="off" aria-describedby="pd-search-results">
+                  <button type="button" class="pd-search-clear" id="pd-search-clear" aria-label="Clear search" title="Clear search" hidden>×</button>
+                </div>
+              </div>
+              <div class="pd-filter-wrap">
+                <label for="pd-filter-disease" class="pd-filter-label">Condition</label>
+                <select id="pd-filter-disease" class="pd-filter-select" aria-label="Filter by type of sickness">
+                  <option value="">All conditions</option>
+                  <option value="Malaria">Malaria</option>
+                  <option value="Typhoid">Typhoid</option>
+                  <option value="Fever">Fever</option>
+                  <option value="Hypertension">Hypertension</option>
+                  <option value="Diabetes">Diabetes</option>
+                  <option value="Respiratory Infection">Respiratory Infection</option>
+                  <option value="Gastrointestinal">Gastrointestinal</option>
+                  <option value="Blood-related">Blood-related</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="pd-tabs-wrap">
+                <span class="pd-tabs-label">Status</span>
+                <div class="pd-tabs" role="tablist">
+                  <button type="button" class="pd-tab" data-status="in" role="tab"><span class="pd-tab-text">In hospital</span></button>
+                  <button type="button" class="pd-tab" data-status="out" role="tab"><span class="pd-tab-text">Discharged</span></button>
+                  <button type="button" class="pd-tab is-active" data-status="all" role="tab"><span class="pd-tab-text">All</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pd-results-bar" id="pd-results-bar">
+            <span class="pd-results-icon" aria-hidden="true">✓</span>
+            <p class="pd-search-results" id="pd-search-results" aria-live="polite">All patient records. Search by name or filter by condition.</p>
+          </div>
+          <div class="pd-empty-state" id="pd-empty-state" hidden>
+            <div class="pd-empty-state-icon" aria-hidden="true">🔍</div>
+            <h3 class="pd-empty-state-title" id="pd-empty-state-title">No patients match the current filters</h3>
+            <p class="pd-empty-state-desc" id="pd-empty-state-desc">Try clearing the search or changing the condition and status filters.</p>
+            <div class="pd-empty-state-actions">
+              <button type="button" class="btn btn-primary" id="pd-empty-clear-search">Clear search</button>
+              <button type="button" class="btn btn-secondary" id="pd-empty-reset-filters">Show all</button>
+              <a href="#" class="btn btn-secondary" id="pd-empty-add-patient" data-view="add-patient">Add patient</a>
+            </div>
+          </div>
+          <div class="pd-table-wrap" id="pd-table-wrap">
+            <table class="pd-table" id="pd-patients-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Age / Gender</th>
+                  <th>Contact</th>
+                  <th>Condition</th>
+                  <th>Date admitted</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="pd-patients-tbody">
+                <tr><td colspan="8" class="pd-empty">No patients to show. Add a patient or change filters.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Add Patient view -->
+        <section class="pd-view" id="view-add-patient" aria-labelledby="pd-page-title" hidden>
+          <form id="pd-add-form" class="pd-form">
+            <h3 class="pd-form-section-title">Personal information</h3>
+            <div class="pd-form-row pd-form-row-half">
+              <div class="pd-form-group">
+                <label for="pd-full-name">Full name <span class="required">*</span></label>
+                <input type="text" id="pd-full-name" name="fullName" required placeholder="e.g. Mary Kamara">
+              </div>
+              <div class="pd-form-group">
+                <label for="pd-age">Age <span class="required">*</span></label>
+                <input type="number" id="pd-age" name="age" min="1" max="120" required placeholder="e.g. 35">
+              </div>
+            </div>
+            <div class="pd-form-row pd-form-row-half">
+              <div class="pd-form-group">
+                <label for="pd-gender">Gender</label>
+                <select id="pd-gender" name="gender">
+                  <option value="">Select</option>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="pd-form-group">
+                <label for="pd-blood-type">Blood type</label>
+                <select id="pd-blood-type" name="bloodType">
+                  <option value="">Select</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                </select>
+              </div>
+            </div>
+            <div class="pd-form-row">
+              <div class="pd-form-group">
+                <label for="pd-phone">Phone number</label>
+                <input type="tel" id="pd-phone" name="phone" placeholder="e.g. +232 00 123456">
+              </div>
+            </div>
+            <div class="pd-form-row">
+              <div class="pd-form-group">
+                <label for="pd-address">Address</label>
+                <input type="text" id="pd-address" name="address" placeholder="Street, city, district">
+              </div>
+            </div>
+            <div class="pd-form-row">
+              <div class="pd-form-group">
+                <label for="pd-image-url">Photo URL <span class="pd-label-optional">(optional)</span></label>
+                <input type="url" id="pd-image-url" name="imageUrl" placeholder="https://example.com/photo.jpg">
+              </div>
+            </div>
+
+            <h3 class="pd-form-section-title">Medical information</h3>
+            <div class="pd-form-row">
+              <div class="pd-form-group">
+                <label for="pd-condition">Type of sickness / Condition <span class="required">*</span></label>
+                <select id="pd-condition" name="condition" required>
+                  <option value="">Select condition</option>
+                  <option value="Malaria">Malaria</option>
+                  <option value="Typhoid">Typhoid</option>
+                  <option value="Fever">Fever</option>
+                  <option value="Hypertension">Hypertension</option>
+                  <option value="Diabetes">Diabetes</option>
+                  <option value="Respiratory Infection">Respiratory Infection</option>
+                  <option value="Gastrointestinal">Gastrointestinal</option>
+                  <option value="Blood-related">Blood-related</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="pd-form-row">
+              <div class="pd-form-group">
+                <label for="pd-symptoms">Symptoms / Chief complaint</label>
+                <textarea id="pd-symptoms" name="symptoms" rows="3" placeholder="e.g. High fever, headache, body aches"></textarea>
+              </div>
+            </div>
+            <div class="pd-form-row">
+              <div class="pd-form-group">
+                <label for="pd-allergies">Known allergies</label>
+                <input type="text" id="pd-allergies" name="allergies" placeholder="e.g. Penicillin, none">
+              </div>
+            </div>
+            <div class="pd-form-row">
+              <div class="pd-form-group">
+                <label for="pd-doctor-notes">Doctor's notes</label>
+                <textarea id="pd-doctor-notes" name="doctorNotes" rows="3" placeholder="Clinical notes, treatment plan"></textarea>
+              </div>
+            </div>
+
+            <h3 class="pd-form-section-title">Admission</h3>
+            <div class="pd-form-row pd-form-row-half">
+              <div class="pd-form-group">
+                <label for="pd-date-admitted">Date admitted <span class="required">*</span></label>
+                <input type="date" id="pd-date-admitted" name="dateAdmitted" required>
+              </div>
+              <div class="pd-form-group">
+                <label for="pd-status">Status</label>
+                <select id="pd-status" name="status">
+                  <option value="in">In hospital</option>
+                  <option value="out">Discharged</option>
+                </select>
+              </div>
+            </div>
+            <div class="pd-form-row">
+              <div class="pd-form-group">
+                <label for="pd-ward">Ward / Bed (optional)</label>
+                <input type="text" id="pd-ward" name="ward" placeholder="e.g. Ward A, Bed 3">
+              </div>
+            </div>
+
+            <div class="pd-form-actions">
+              <button type="submit" class="btn btn-primary">Add patient</button>
+              <button type="reset" class="btn btn-secondary">Clear form</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Data Updates view -->
+        <section class="pd-view" id="view-updates" aria-labelledby="pd-page-title" hidden>
+          <p class="pd-view-desc">Update existing patient records. Click a patient below to edit, or use the Patients page to view and search.</p>
+          <div class="pd-updates-list-wrap">
+            <ul class="pd-updates-list" id="pd-updates-list"></ul>
+            <p class="pd-updates-empty" id="pd-updates-empty">No patients to update. <a href="#" data-view="add-patient" class="pd-link">Add a patient</a> first.</p>
+          </div>
+          <a href="#" class="pd-link-btn" data-view="patients">Go to Patients →</a>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="pd-toast" id="pd-toast" role="status" aria-live="polite"></div>
+
+  <!-- View patient details modal -->
+  <div class="pd-modal-overlay" id="pd-detail-modal" aria-hidden="true" role="dialog" aria-labelledby="pd-detail-title" aria-modal="true">
+    <div class="pd-modal">
+      <div class="pd-modal-header">
+        <h2 class="pd-modal-title" id="pd-detail-title">Patient details</h2>
+        <button type="button" class="pd-modal-close" id="pd-detail-close" aria-label="Close">×</button>
+      </div>
+      <div class="pd-modal-body" id="pd-detail-body"></div>
+    </div>
+  </div>
+
+  <!-- Edit patient modal -->
+  <div class="pd-modal-overlay" id="pd-edit-modal" aria-hidden="true" role="dialog" aria-labelledby="pd-edit-title" aria-modal="true">
+    <div class="pd-modal pd-modal-lg">
+      <div class="pd-modal-header">
+        <h2 class="pd-modal-title" id="pd-edit-title">Edit patient</h2>
+        <button type="button" class="pd-modal-close" id="pd-edit-close" aria-label="Close">×</button>
+      </div>
+      <div class="pd-modal-body">
+        <div class="pd-edit-avatar-wrap" id="pd-edit-avatar-wrap">
+          <div class="pd-avatar pd-avatar-lg pd-edit-avatar" id="pd-edit-avatar" aria-hidden="true"></div>
+          <p class="pd-edit-avatar-hint">Photo updates when you save.</p>
+        </div>
+        <form id="pd-edit-form" class="pd-form pd-form-inline">
+          <input type="hidden" id="pd-edit-id" name="editId">
+          <div class="pd-form-row">
+            <div class="pd-form-group">
+              <label for="pd-edit-image-url">Photo URL <span class="pd-label-optional">(optional)</span></label>
+              <input type="url" id="pd-edit-image-url" name="imageUrl" placeholder="https://example.com/photo.jpg">
+            </div>
+          </div>
+          <div class="pd-form-row pd-form-row-half">
+            <div class="pd-form-group">
+              <label for="pd-edit-full-name">Full name <span class="required">*</span></label>
+              <input type="text" id="pd-edit-full-name" name="fullName" required>
+            </div>
+            <div class="pd-form-group">
+              <label for="pd-edit-age">Age <span class="required">*</span></label>
+              <input type="number" id="pd-edit-age" name="age" min="1" max="120" required>
+            </div>
+          </div>
+          <div class="pd-form-row pd-form-row-half">
+            <div class="pd-form-group">
+              <label for="pd-edit-gender">Gender</label>
+              <select id="pd-edit-gender" name="gender">
+                <option value="">Select</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="pd-form-group">
+              <label for="pd-edit-blood-type">Blood type</label>
+              <select id="pd-edit-blood-type" name="bloodType">
+                <option value="">Select</option>
+                <option value="A+">A+</option><option value="A-">A-</option><option value="B+">B+</option><option value="B-">B-</option>
+                <option value="O+">O+</option><option value="O-">O-</option><option value="AB+">AB+</option><option value="AB-">AB-</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-group">
+              <label for="pd-edit-phone">Phone</label>
+              <input type="tel" id="pd-edit-phone" name="phone">
+            </div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-group">
+              <label for="pd-edit-address">Address</label>
+              <input type="text" id="pd-edit-address" name="address">
+            </div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-group">
+              <label for="pd-edit-condition">Condition <span class="required">*</span></label>
+              <select id="pd-edit-condition" name="condition" required>
+                <option value="">Select</option>
+                <option value="Malaria">Malaria</option><option value="Typhoid">Typhoid</option><option value="Fever">Fever</option>
+                <option value="Hypertension">Hypertension</option><option value="Diabetes">Diabetes</option>
+                <option value="Respiratory Infection">Respiratory Infection</option><option value="Gastrointestinal">Gastrointestinal</option>
+                <option value="Blood-related">Blood-related</option><option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-group">
+              <label for="pd-edit-symptoms">Symptoms</label>
+              <textarea id="pd-edit-symptoms" name="symptoms" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-group">
+              <label for="pd-edit-allergies">Allergies</label>
+              <input type="text" id="pd-edit-allergies" name="allergies">
+            </div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-group">
+              <label for="pd-edit-doctor-notes">Doctor's notes</label>
+              <textarea id="pd-edit-doctor-notes" name="doctorNotes" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="pd-form-row pd-form-row-half">
+            <div class="pd-form-group">
+              <label for="pd-edit-date-admitted">Date admitted</label>
+              <input type="date" id="pd-edit-date-admitted" name="dateAdmitted">
+            </div>
+            <div class="pd-form-group">
+              <label for="pd-edit-status">Status</label>
+              <select id="pd-edit-status" name="status">
+                <option value="in">In hospital</option>
+                <option value="out">Discharged</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-form-row">
+            <div class="pd-form-group">
+              <label for="pd-edit-ward">Ward / Bed</label>
+              <input type="text" id="pd-edit-ward" name="ward">
+            </div>
+          </div>
+          <div class="pd-form-actions">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary pd-edit-cancel">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete confirm modal -->
+  <div class="pd-modal-overlay" id="pd-delete-modal" aria-hidden="true" role="dialog" aria-labelledby="pd-delete-title" aria-modal="true">
+    <div class="pd-modal pd-modal-sm">
+      <div class="pd-modal-header">
+        <h2 class="pd-modal-title" id="pd-delete-title">Remove patient?</h2>
+        <button type="button" class="pd-modal-close" id="pd-delete-cancel" aria-label="Close">×</button>
+      </div>
+      <div class="pd-modal-body">
+        <p class="pd-delete-message" id="pd-delete-message">This will permanently remove this patient record.</p>
+        <div class="pd-modal-actions">
+          <button type="button" class="btn btn-secondary" id="pd-delete-cancel-btn">Cancel</button>
+          <button type="button" class="btn btn-danger" id="pd-delete-confirm">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/patient-dashboard.js"></script>
+</body>
+</html>

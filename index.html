@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital Patient Record Management System for Community Health Centers in Sierra Leone.">
+  <title>Home | Digital Patient Record Management – Sierra Leone</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation: logo left, pages + Login right, mobile hamburger -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Home – Patient Record System" title="Go to home">
+        <img src="images/logo.svg" alt="Patient Record System" class="logo-img" width="40" height="40">
+        <span class="logo-text">Patient Record System</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">☰</button>
+      <div class="nav-right" id="nav-menu">
+        <ul class="nav-menu">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="register.html" class="nav-menu-link">Register</a>
+        <a href="login.html" class="btn-login">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero: image slider, typewriter heading, CTAs -->
+    <section class="hero hero-slider-section" aria-label="Hero slider">
+      <div class="hero-slider">
+        <div class="hero-slides">
+          <div class="hero-slide hero-slide-bg-1 is-active" data-slide="0" aria-hidden="false">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+              <h1><span id="hero-typewriter" class="typewriter-text" data-text="Digital Patient Record Management System" aria-live="polite"></span><span class="typewriter-cursor" aria-hidden="true">|</span></h1>
+              <p>Secure, easy-to-use patient records and care coordination for community health centers across Sierra Leone.</p>
+              <div class="hero-actions">
+                <a href="about.html" class="btn btn-primary">Learn more</a>
+                <a href="#features" class="btn btn-secondary">Read more</a>
+              </div>
+            </div>
+          </div>
+          <div class="hero-slide hero-slide-bg-2" data-slide="1" aria-hidden="true">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+              <h1>One place for every patient</h1>
+              <p>Store history, visits, and follow-ups in one secure system. Less paperwork, better continuity of care.</p>
+              <div class="hero-actions">
+                <a href="about.html" class="btn btn-primary">Learn more</a>
+                <a href="contact.html" class="btn btn-secondary">Read more</a>
+              </div>
+            </div>
+          </div>
+          <div class="hero-slide hero-slide-bg-3" data-slide="2" aria-hidden="true">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+              <h1>Safe and confidential</h1>
+              <p>Access controls and secure storage keep patient information protected. Designed for trust.</p>
+              <div class="hero-actions">
+                <a href="contact.html" class="btn btn-primary">Learn more</a>
+                <a href="login.html" class="btn btn-secondary">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="hero-slider-btn hero-slider-prev" aria-label="Previous slide">←</button>
+        <button type="button" class="hero-slider-btn hero-slider-next" aria-label="Next slide">→</button>
+        <div class="hero-slider-dots" role="tablist" aria-label="Slide navigation">
+          <button type="button" class="hero-dot is-active" data-slide="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+          <button type="button" class="hero-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+          <button type="button" class="hero-dot" data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="main-content">
+      <!-- About -->
+      <section class="about-section" id="about" aria-labelledby="about-heading">
+        <div class="about-section-inner">
+          <div class="about-section-image">
+            <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80" alt="Community health care – staff and patients" width="600" height="400" loading="lazy">
+          </div>
+          <div class="about-section-content">
+            <h2 id="about-heading" class="section-title">About the system</h2>
+            <p class="about-lead">The Digital Patient Record Management System helps community health centers in Sierra Leone keep patient records secure, easy to find, and easy to update.</p>
+            <p>Staff can register patients, track visits, and run reports—all in one place. We built it for real-world use: simple screens, clear workflows, and a focus on privacy so both staff and patients can trust it.</p>
+            <a href="about.html" class="btn btn-primary">Learn more about us</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="section section-features" id="features" aria-labelledby="features-heading">
+        <h2 id="features-heading" class="section-title">Why this system matters</h2>
+        <p class="section-intro">Built for community health centers. Secure, simple, and designed for better patient care.</p>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="icon" aria-hidden="true">📋</div>
+            <h3>Patient records</h3>
+            <p>One place for patient details, history, and visits. Consistent care and less paperwork.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon" aria-hidden="true">🔒</div>
+            <h3>Privacy & security</h3>
+            <p>Access controls and secure storage keep patient information safe and confidential.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon" aria-hidden="true">📊</div>
+            <h3>Reporting</h3>
+            <p>Generate reports to support planning and better health outcomes in your community.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon" aria-hidden="true">📱</div>
+            <h3>Easy to use</h3>
+            <p>Simple screens and workflows so staff can focus on patients, not complicated software.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- What we do -->
+      <section class="what-we-do" id="what-we-do" aria-labelledby="what-we-do-heading">
+        <div class="what-we-do-overlay"></div>
+        <div class="what-we-do-content">
+          <h2 id="what-we-do-heading">What we do</h2>
+          <p class="what-we-do-line what-we-do-line-1">We help community health centers manage patient records digitally.</p>
+          <p class="what-we-do-line what-we-do-line-2">Secure, simple, and in one place—from registration to visits and reporting.</p>
+          <p class="what-we-do-line what-we-do-line-3">We support better care and less paperwork across Sierra Leone.</p>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="section section-how" id="how-it-works" aria-labelledby="how-heading">
+        <h2 id="how-heading" class="section-title">How it works</h2>
+        <p class="section-intro">Three simple steps to better patient records.</p>
+        <div class="how-grid">
+          <article class="how-card">
+            <div class="how-card-image">
+              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&q=80" alt="Patient registration and care" width="400" height="260" loading="lazy">
+            </div>
+            <span class="how-step">1</span>
+            <h3>Register patients</h3>
+            <p>Add patient details once. Update when needed. Everything in one secure place.</p>
+          </article>
+          <article class="how-card">
+            <div class="how-card-image">
+              <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80" alt="Tracking visits and medical records" width="400" height="260" loading="lazy">
+            </div>
+            <span class="how-step">2</span>
+            <h3>Track visits</h3>
+            <p>Record each visit and follow-up. Keep a clear history for better continuity of care.</p>
+          </article>
+          <article class="how-card">
+            <div class="how-card-image">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="Reports and data for planning" width="400" height="260" loading="lazy">
+            </div>
+            <span class="how-step">3</span>
+            <h3>Run reports</h3>
+            <p>Generate reports for planning and health programs. Use data to improve outcomes.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Testimonials: dot navigation slider -->
+      <section class="testimonial-section" id="testimonials" aria-labelledby="testimonials-heading">
+        <h2 id="testimonials-heading" class="section-title">What people say</h2>
+        <p class="section-intro">Community health staff and partners share their experience with the system.</p>
+        <div class="testimonial-slider" role="region" aria-label="Testimonials carousel">
+          <div class="testimonial-track">
+            <blockquote class="testimonial-slide is-active" data-slide="0" aria-hidden="false">
+              <span class="testimonial-quote-icon" aria-hidden="true">"</span>
+              <p class="testimonial-text">The system has made our work so much easier. We find patient records in seconds and spend less time on paperwork. Our team and the community both benefit.</p>
+              <footer class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=120&h=120&fit=crop&crop=face" alt="" class="testimonial-avatar" width="56" height="56" loading="lazy">
+                <div class="testimonial-author-info">
+                  <cite class="testimonial-name">Mariama Kamara</cite>
+                  <span class="testimonial-role">Health Center Lead, Freetown</span>
+                </div>
+              </footer>
+            </blockquote>
+            <blockquote class="testimonial-slide" data-slide="1" aria-hidden="true">
+              <span class="testimonial-quote-icon" aria-hidden="true">"</span>
+              <p class="testimonial-text">Secure, simple, and built for our reality. We can now run reports for the district and plan better. I recommend it to any center looking to go digital.</p>
+              <footer class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=face" alt="" class="testimonial-avatar" width="56" height="56" loading="lazy">
+                <div class="testimonial-author-info">
+                  <cite class="testimonial-name">Ibrahim Sesay</cite>
+                  <span class="testimonial-role">Community Health Officer, Bo</span>
+                </div>
+              </footer>
+            </blockquote>
+            <blockquote class="testimonial-slide" data-slide="2" aria-hidden="true">
+              <span class="testimonial-quote-icon" aria-hidden="true">"</span>
+              <p class="testimonial-text">Patient information is safe and easy to update. Continuity of care has improved because we always have the history in one place. A real game-changer.</p>
+              <footer class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&h=120&fit=crop&crop=face" alt="" class="testimonial-avatar" width="56" height="56" loading="lazy">
+                <div class="testimonial-author-info">
+                  <cite class="testimonial-name">Fatmata Bangura</cite>
+                  <span class="testimonial-role">Nurse, Makeni</span>
+                </div>
+              </footer>
+            </blockquote>
+          </div>
+          <div class="testimonial-dots" role="tablist" aria-label="Choose testimonial">
+            <button type="button" class="testimonial-dot is-active" data-slide="0" role="tab" aria-selected="true" aria-label="Testimonial 1: Mariama Kamara"></button>
+            <button type="button" class="testimonial-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Testimonial 2: Ibrahim Sesay"></button>
+            <button type="button" class="testimonial-dot" data-slide="2" role="tab" aria-selected="false" aria-label="Testimonial 3: Fatmata Bangura"></button>
+          </div>
+        </div>
+      </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand-block">
+          <a href="index.html" class="footer-logo" aria-label="Home – Patient Record System">
+            <img src="images/logo.svg" alt="" class="footer-logo-img" width="44" height="44" loading="lazy">
+          </a>
+          <div class="footer-brand">Digital Patient Record Management System</div>
+          <p class="footer-tagline">For Community Health Centers in Sierra Leone</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+<ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="tracking.html">Dashboard</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+        </nav>
+        <div class="footer-social">
+          <span class="footer-social-label">Follow us</span>
+          <ul class="footer-social-list" aria-label="Social media">
+            <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook"><svg class="footer-social-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></li>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Twitter"><svg class="footer-social-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn"><svg class="footer-social-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li>
+            <li><a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="YouTube"><svg class="footer-social-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-copy">© 2025 Community Health Center – Sierra Leone.</p>
+    </footer>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
